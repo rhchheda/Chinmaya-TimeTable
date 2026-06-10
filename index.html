@@ -92,6 +92,151 @@ th.h-brk{background:#546e7a;font-size:.64rem;width:72px;}
   .strip{display:none;}
   .tt-row,.header,.legend,.tt-wrap,.footer,.logo-ring,.fy-badge,.wef-badge{animation:none!important;opacity:1!important;transform:none!important;}
 }
+
+/* ── EDIT BUTTON ── */
+.edit-fab{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--saffron);color:#fff;border:none;
+  font-size:1.4rem;cursor:pointer;
+  box-shadow:0 4px 18px rgba(232,93,4,.45);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;
+}
+.edit-fab:hover{transform:scale(1.12);box-shadow:0 6px 24px rgba(232,93,4,.55);}
+
+/* ── PASSWORD MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(10,20,60,.72);
+  display:flex;align-items:center;justify-content:center;
+  z-index:1000;backdrop-filter:blur(4px);
+  animation:fadeIn .2s both;
+}
+.modal-box{
+  background:#fff;border-radius:18px;padding:32px 36px;
+  width:min(92vw,400px);box-shadow:0 16px 56px rgba(0,0,0,.28);
+  animation:popIn .25s both;
+}
+.modal-box h2{font-family:'Baloo 2',sans-serif;color:var(--navy);
+  font-size:1.25rem;margin-bottom:6px;}
+.modal-box p{color:#546e7a;font-size:.82rem;margin-bottom:18px;}
+.modal-box input{
+  width:100%;padding:10px 14px;border:1.5px solid #c0cfe8;
+  border-radius:10px;font-size:.95rem;font-family:'Nunito',sans-serif;
+  outline:none;margin-bottom:14px;transition:border-color .2s;
+}
+.modal-box input:focus{border-color:var(--navy);}
+.modal-row{display:flex;gap:10px;}
+.btn{
+  flex:1;padding:10px;border:none;border-radius:10px;
+  font-weight:800;font-size:.9rem;cursor:pointer;font-family:'Nunito',sans-serif;
+  transition:opacity .15s;
+}
+.btn:hover{opacity:.85;}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-cancel{background:#eceff1;color:#546e7a;}
+.modal-err{color:#e53935;font-size:.78rem;margin-top:-8px;
+  margin-bottom:10px;display:none;}
+
+/* ── ADMIN PANEL ── */
+.admin-panel{
+  position:fixed;top:0;right:0;bottom:0;width:min(96vw,420px);
+  background:#fff;z-index:998;
+  box-shadow:-6px 0 40px rgba(19,45,110,.18);
+  display:flex;flex-direction:column;
+  animation:slideInRight .3s cubic-bezier(.22,1,.36,1) both;
+  overflow:hidden;
+}
+@keyframes slideInRight{
+  from{transform:translateX(100%);}
+  to{transform:translateX(0);}
+}
+.panel-header{
+  background:linear-gradient(130deg,#0e2060,#1b3f99);
+  padding:18px 20px;display:flex;align-items:center;gap:12px;
+  flex-shrink:0;
+}
+.panel-header h2{
+  font-family:'Baloo 2',sans-serif;color:var(--gold);
+  font-size:1.05rem;font-weight:900;flex:1;
+}
+.panel-close{
+  background:rgba(255,255,255,.15);border:none;color:#fff;
+  width:32px;height:32px;border-radius:50%;font-size:1rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.panel-close:hover{background:rgba(255,255,255,.28);}
+.panel-body{flex:1;overflow-y:auto;padding:18px 20px;}
+
+/* ── PANEL SECTIONS ── */
+.p-section{margin-bottom:22px;}
+.p-section h3{
+  font-family:'Baloo 2',sans-serif;color:var(--navy);
+  font-size:.82rem;font-weight:900;letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:10px;
+  padding-bottom:5px;border-bottom:2px solid #e8edf8;
+}
+.p-row{margin-bottom:10px;}
+.p-row label{
+  display:block;font-size:.72rem;font-weight:800;
+  color:#546e7a;margin-bottom:3px;letter-spacing:.4px;text-transform:uppercase;
+}
+.p-row input,.p-row textarea,.p-row select{
+  width:100%;padding:8px 11px;border:1.5px solid #c0cfe8;
+  border-radius:8px;font-size:.82rem;font-family:'Nunito',sans-serif;
+  outline:none;transition:border-color .2s;resize:vertical;
+}
+.p-row input:focus,.p-row textarea:focus,.p-row select:focus{
+  border-color:var(--navy);
+}
+.p-row textarea{min-height:60px;}
+
+/* ── TIMETABLE EDIT GRID ── */
+.tt-edit-grid{
+  display:grid;gap:4px;
+  font-size:.65rem;font-weight:700;
+}
+.tt-edit-cls{
+  font-size:.68rem;font-weight:800;color:var(--navy);
+  padding:5px 4px;background:#e8edf8;border-radius:6px;
+  text-align:center;
+}
+.tt-edit-cell select{
+  width:100%;padding:3px 4px;border:1px solid #c0cfe8;
+  border-radius:5px;font-size:.62rem;font-family:'Nunito',sans-serif;
+  background:#fff;cursor:pointer;
+}
+.tt-edit-day{
+  font-size:.7rem;font-weight:900;color:#fff;
+  background:var(--saffron);border-radius:6px;
+  padding:4px;text-align:center;writing-mode:vertical-lr;
+  transform:rotate(180deg);
+}
+
+/* ── SAVE BAR ── */
+.panel-footer{
+  flex-shrink:0;padding:14px 20px;
+  border-top:1px solid #e8edf8;
+  display:flex;gap:10px;align-items:center;
+}
+.save-status{
+  flex:1;font-size:.75rem;font-weight:700;color:#546e7a;
+}
+.save-status.ok{color:var(--mint);}
+.save-status.err{color:#e53935;}
+.btn-save{
+  background:var(--saffron);color:#fff;
+  padding:9px 22px;border:none;border-radius:10px;
+  font-weight:800;font-size:.85rem;cursor:pointer;
+  font-family:'Nunito',sans-serif;
+}
+.btn-save:hover{opacity:.88;}
+
+/* ── MOBILE PANEL FULL WIDTH ── */
+@media(max-width:500px){
+  .admin-panel{width:100vw;}
+  .edit-fab{bottom:20px;right:16px;}
+}
 </style>
 </head>
 <body>
@@ -126,7 +271,7 @@ th.h-brk{background:#546e7a;font-size:.64rem;width:72px;}
     <div class="leg"><div class="ldot" style="background:#7e57c2"></div>Computer Lab</div>
   </div>
   <div class="tt-wrap" id="tt-area">
-    <div class="loader"><div class="spinner"></div><p>Loading timetable from the Desk of Principal&hellip;</p></div>
+    <div class="loader"><div class="spinner"></div><p>Loading timetable from Google Sheets&hellip;</p></div>
   </div>
   <div class="footer">
     <div class="q-card sci">
@@ -141,9 +286,43 @@ th.h-brk{background:#546e7a;font-size:.64rem;width:72px;}
     </div>
   </div>
   <div class="madeby">Made with &#10084; ~rhc &nbsp;&middot;&nbsp; EE Lab, KLE-CTIE &nbsp;&middot;&nbsp; <strong id="madeby-name">Chinmaya PU College of Science &amp; Commerce, Hubballi</strong></div>
+
+<!-- ── EDIT FAB ── -->
+<button class="edit-fab" id="edit-fab" title="Admin Edit">&#9998;</button>
+
+<!-- ── PASSWORD MODAL ── -->
+<div class="modal-overlay" id="pwd-modal" style="display:none">
+  <div class="modal-box">
+    <h2>&#128274; Admin Access</h2>
+    <p>Enter the admin password to edit the timetable, config, and quotes.</p>
+    <input type="password" id="pwd-input" placeholder="Password" autocomplete="current-password">
+    <div class="modal-err" id="pwd-err">&#10006; Incorrect password. Try again.</div>
+    <div class="modal-row">
+      <button class="btn btn-cancel" id="pwd-cancel">Cancel</button>
+      <button class="btn btn-primary" id="pwd-ok">&#128275; Unlock</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL (hidden until unlocked) ── -->
+<div class="admin-panel" id="admin-panel" style="display:none">
+  <div class="panel-header">
+    <h2>&#9998; Edit Timetable</h2>
+    <button class="panel-close" id="panel-close">&#10005;</button>
+  </div>
+  <div class="panel-body" id="panel-body">
+    <!-- Filled by JS after unlock -->
+    <div class="loader"><div class="spinner"></div><p>Loading editor&hellip;</p></div>
+  </div>
+  <div class="panel-footer">
+    <span class="save-status" id="save-status"></span>
+    <button class="btn-save" id="btn-save">&#10003; Save All Changes</button>
+  </div>
+</div>
+
 </div>
 <script>
-const GAS_URL = "https://script.google.com/macros/s/AKfycbxiH9_tZC8EvoN3HwToBsBsoSUHDAae1xq3GRwO2Z2EjQlVSlzivgkWf5AqozQ9bE6N/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbz78AMRpXSiOiK2j0dD5-0TP3xgpRW-Fcx4nf35rO5lOrIGkoo5qnZJ_l6uuADWeGwO/exec";
 const DAYS    = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"];
 const CLASSES = ["PU I - A","PU I - B","PU I - C","PU II - A","PU II - B"];
 
@@ -249,6 +428,256 @@ async function loadData(){
   }
 }
 loadData();
+
+
+// ══════════════════════════════════════════════════════════════
+//  ADMIN EDIT SYSTEM
+// ══════════════════════════════════════════════════════════════
+const SUBJECTS = [
+  "Accountancy","Business Studies","English","Economics",
+  "Hindi","Kannada / Sanskrit","Kannada / Hindi",
+  "Statistics","Tally","Computer Science",
+  "Comp. Sci / Statistics","Computer Lab (A)","Computer Lab (B)","—"
+];
+const DAYS_LIST    = ["MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY"];
+const CLASSES_LIST = ["PU I - A","PU I - B","PU I - C","PU II - A","PU II - B"];
+const PERIOD_KEYS  = ["p1","p2","p3","p4","p5","p6"];
+const PERIOD_LBLS  = ["10:00–11:00","11:00–12:00","12:10–1:10","1:40–2:40","2:40–3:40","3:50–5:00"];
+const SAT_KEYS     = ["p1","p2","p3","p4"];
+const SAT_LBLS     = ["10:00–11:00","11:00–12:00","12:10–1:10","1:10–2:10"];
+
+// SHA-256 in browser (Web Crypto API)
+async function sha256(msg){
+  const buf = await crypto.subtle.digest('SHA-256',
+    new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf))
+    .map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+let _adminHash = null;   // set after successful unlock
+let _liveData  = null;   // snapshot of current timetable data
+let _pending   = [];     // list of {action, payload} awaiting save
+
+// ── FAB click → show modal ────────────────────────────────────
+document.getElementById('edit-fab').addEventListener('click',()=>{
+  document.getElementById('pwd-modal').style.display='flex';
+  setTimeout(()=>document.getElementById('pwd-input').focus(),100);
+});
+
+// ── Modal cancel ──────────────────────────────────────────────
+document.getElementById('pwd-cancel').addEventListener('click',closePwdModal);
+document.getElementById('pwd-input').addEventListener('keydown',e=>{
+  if(e.key==='Enter') document.getElementById('pwd-ok').click();
+  if(e.key==='Escape') closePwdModal();
+});
+
+function closePwdModal(){
+  document.getElementById('pwd-modal').style.display='none';
+  document.getElementById('pwd-input').value='';
+  document.getElementById('pwd-err').style.display='none';
+}
+
+// ── Verify password (hash client-side, compare to stored hash from GAS) ──
+document.getElementById('pwd-ok').addEventListener('click', async()=>{
+  const pwd = document.getElementById('pwd-input').value.trim();
+  if(!pwd) return;
+  const hash = await sha256(pwd);
+
+  // Fetch stored hash from GAS to compare
+  try{
+    const res  = await fetch(GAS_URL+'?action=getHash');
+    const data = await res.json();
+    if(data.hash && data.hash===hash){
+      _adminHash = pwd;   // store plain pwd for POST (GAS hashes server-side too)
+      closePwdModal();
+      openAdminPanel();
+    } else {
+      document.getElementById('pwd-err').style.display='block';
+      document.getElementById('pwd-input').select();
+    }
+  }catch(e){
+    document.getElementById('pwd-err').textContent='&#10006; Could not verify — check GAS_URL.';
+    document.getElementById('pwd-err').style.display='block';
+  }
+});
+
+// ── Open admin panel ──────────────────────────────────────────
+function openAdminPanel(){
+  _pending = [];
+  _liveData = window._lastData; // from loadData()
+  const panel = document.getElementById('admin-panel');
+  panel.style.display='flex';
+  buildPanelBody(_liveData);
+}
+
+document.getElementById('panel-close').addEventListener('click',()=>{
+  document.getElementById('admin-panel').style.display='none';
+  _adminHash=null; _pending=[];
+});
+
+// ── Build the editor UI ───────────────────────────────────────
+function buildPanelBody(data){
+  const body = document.getElementById('panel-body');
+  let h='';
+
+  // CONFIG SECTION
+  h+=`<div class="p-section">
+    <h3>&#9881; College Config</h3>`;
+  const cfgFields=[
+    {key:'collegeName',label:'College Name',tag:'input'},
+    {key:'fy',label:'Academic Year (FY)',tag:'input'},
+    {key:'wef',label:'w.e.f. Date',tag:'input'},
+    {key:'sciLabel',label:'Science Label',tag:'input'},
+    {key:'commLabel',label:'Commerce Label',tag:'input'},
+    {key:'sciQuote1',label:'Science Quote 1',tag:'textarea'},
+    {key:'sciQuote2',label:'Science Quote 2',tag:'textarea'},
+    {key:'commQuote1',label:'Commerce Quote 1',tag:'textarea'},
+    {key:'commQuote2',label:'Commerce Quote 2',tag:'textarea'},
+  ];
+  cfgFields.forEach(f=>{
+    const val=(data.config[f.key]||'').replace(/"/g,'&quot;');
+    h+=`<div class="p-row"><label>${f.label}</label>`;
+    if(f.tag==='textarea')
+      h+=`<textarea data-cfg="${f.key}">${data.config[f.key]||''}</textarea>`;
+    else
+      h+=`<input type="text" data-cfg="${f.key}" value="${val}">`;
+    h+=`</div>`;
+  });
+  h+=`</div>`;
+
+  // WEEKDAY TIMETABLE SECTION
+  h+=`<div class="p-section"><h3>&#128197; Mon–Fri Timetable</h3>`;
+  DAYS_LIST.forEach(day=>{
+    h+=`<div style="margin-bottom:14px;">
+      <div style="font-size:.72rem;font-weight:900;color:var(--saffron);
+        text-transform:uppercase;margin-bottom:6px;letter-spacing:.5px;">${day}</div>
+      <div style="display:grid;grid-template-columns:60px repeat(${PERIOD_KEYS.length},1fr);gap:3px;">`;
+    // Header row
+    h+=`<div></div>`;
+    PERIOD_LBLS.forEach(l=>h+=`<div style="font-size:.56rem;font-weight:800;color:#546e7a;text-align:center;padding:2px 0">${l}</div>`);
+    // Class rows
+    CLASSES_LIST.forEach(cls=>{
+      const r=(data.timetable[day]||{})[cls]||{};
+      h+=`<div class="tt-edit-cls">${cls.replace('PU ','')}</div>`;
+      PERIOD_KEYS.forEach((pk,pi)=>{
+        const cur=r[pk]||'—';
+        h+=`<div class="tt-edit-cell"><select data-day="${day}" data-cls="${cls}" data-pk="${pk}">`;
+        SUBJECTS.forEach(s=>h+=`<option value="${s}"${s===cur?' selected':''}>${s==='—'?'—':s}</option>`);
+        h+=`</select></div>`;
+      });
+    });
+    h+=`</div></div>`;
+  });
+  h+=`</div>`;
+
+  // SATURDAY SECTION
+  h+=`<div class="p-section"><h3>&#128197; Saturday Timetable</h3>
+    <div style="display:grid;grid-template-columns:60px repeat(${SAT_KEYS.length},1fr);gap:3px;">`;
+  h+=`<div></div>`;
+  SAT_LBLS.forEach(l=>h+=`<div style="font-size:.56rem;font-weight:800;color:#546e7a;text-align:center;padding:2px 0">${l}</div>`);
+  CLASSES_LIST.forEach(cls=>{
+    const r=data.satTable[cls]||{};
+    h+=`<div class="tt-edit-cls">${cls.replace('PU ','')}</div>`;
+    SAT_KEYS.forEach(pk=>{
+      const cur=r[pk]||'—';
+      h+=`<div class="tt-edit-cell"><select data-sat="${cls}" data-pk="${pk}">`;
+      SUBJECTS.forEach(s=>h+=`<option value="${s}"${s===cur?' selected':''}>${s==='—'?'—':s}</option>`);
+      h+=`</select></div>`;
+    });
+  });
+  h+=`</div></div>`;
+
+  body.innerHTML=h;
+
+  // Track changes on every input/select
+  body.querySelectorAll('[data-cfg]').forEach(el=>{
+    el.addEventListener('input',()=>{
+      queuePending({action:'updateConfig',payload:{key:el.dataset.cfg,value:el.value}});
+    });
+  });
+  body.querySelectorAll('[data-day]').forEach(el=>{
+    el.addEventListener('change',()=>{
+      // Map pk → sheet col  p1=3,p2=4,p3=6,p4=8,p5=9,p6=10
+      const pkToCol={p1:3,p2:4,p3:6,p4:8,p5:9,p6:10};
+      const dayIdx=DAYS_LIST.indexOf(el.dataset.day);
+      const clsIdx=CLASSES_LIST.indexOf(el.dataset.cls);
+      const sheetRow=2+dayIdx*5+clsIdx;
+      queuePending({action:'updateCell',payload:{
+        sheet:'weekday',row:sheetRow,
+        col:pkToCol[el.dataset.pk],value:el.value
+      }});
+    });
+  });
+  body.querySelectorAll('[data-sat]').forEach(el=>{
+    el.addEventListener('change',()=>{
+      const pkToCol={p1:2,p2:3,p3:5,p4:6};
+      const clsIdx=CLASSES_LIST.indexOf(el.dataset.sat);
+      queuePending({action:'updateCell',payload:{
+        sheet:'saturday',row:clsIdx+2,
+        col:pkToCol[el.dataset.pk],value:el.value
+      }});
+    });
+  });
+}
+
+// Deduplicate pending changes — only keep latest per key
+function queuePending(change){
+  const key = change.action==='updateConfig'
+    ? 'cfg:'+change.payload.key
+    : `cell:${change.payload.sheet}:${change.payload.row}:${change.payload.col}`;
+  _pending = _pending.filter(p=>{
+    const k = p.action==='updateConfig'
+      ? 'cfg:'+p.payload.key
+      : `cell:${p.payload.sheet}:${p.payload.row}:${p.payload.col}`;
+    return k!==key;
+  });
+  _pending.push(change);
+  document.getElementById('save-status').textContent=`${_pending.length} unsaved change${_pending.length!==1?'s':''}`;
+  document.getElementById('save-status').className='save-status';
+}
+
+// ── Save all pending changes ───────────────────────────────────
+document.getElementById('btn-save').addEventListener('click', async()=>{
+  if(!_pending.length){
+    setStatus('No changes to save.','ok'); return;
+  }
+  const btn=document.getElementById('btn-save');
+  btn.disabled=true; btn.textContent='Saving…';
+  let errors=0;
+  for(const change of _pending){
+    try{
+      const res=await fetch(GAS_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({...change, password:_adminHash})
+      });
+      const d=await res.json();
+      if(!d.ok) errors++;
+    }catch(e){ errors++; }
+  }
+  btn.disabled=false; btn.textContent='&#10003; Save All Changes';
+  if(errors===0){
+    _pending=[];
+    setStatus('&#10003; All changes saved!','ok');
+    // Reload timetable data
+    await loadData();
+  } else {
+    setStatus(`&#10006; ${errors} error(s) — check GAS_URL & password`,'err');
+  }
+});
+
+function setStatus(msg,cls){
+  const s=document.getElementById('save-status');
+  s.innerHTML=msg; s.className='save-status '+cls;
+}
+
+// Expose _lastData for admin panel
+const _origRender=render;
+window.render=function(data){
+  window._lastData=data;
+  _origRender(data);
+};
+
 </script>
 </body>
 </html>
